@@ -45,7 +45,6 @@ class Day01 : AoCDay("01") {
 
         return calibrationValue
     }
-
 }
 
 fun main() {
