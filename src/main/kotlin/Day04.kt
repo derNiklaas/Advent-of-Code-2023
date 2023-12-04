@@ -52,7 +52,7 @@ class Day04 : AoCDay("04") {
 
 }
 
-data class ScratchTicket(val id: Int, val winningNumbers: List<Int>, val numbers: List<Int>) {
+private data class ScratchTicket(val id: Int, val winningNumbers: List<Int>, val numbers: List<Int>) {
     companion object {
         fun fromInput(input: String): ScratchTicket {
             val (id, code) = input.removePrefix("Card").split(": ")
