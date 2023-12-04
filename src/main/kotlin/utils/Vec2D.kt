@@ -14,6 +14,19 @@ data class Vec2D(val x: Int, val y: Int) {
      */
     fun manhattanDistance(other: Vec2D) = abs(other.x - x) + abs(other.y - y)
 
+    /**
+     * Returns a list of all direct neighbours of this Vec2D.
+     */
+    fun getNeighbours() = buildList {
+        for (xChange in -1..1) {
+            for (yChange in -1..1) {
+                if (xChange == 0 && yChange == 0) continue
+                add(Vec2D(x + xChange, y + yChange))
+            }
+        }
+    }
+
+
     operator fun plus(other: Vec2D) = Vec2D(x + other.x, y + other.y)
 
     operator fun minus(other: Vec2D) = Vec2D(x - other.x, y - other.y)
