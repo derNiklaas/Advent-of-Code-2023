@@ -55,9 +55,8 @@ class Day04 : AoCDay("04") {
 private data class ScratchTicket(val id: Int, val winningNumbers: List<Int>, val numbers: List<Int>) {
     companion object {
         fun fromInput(input: String): ScratchTicket {
-            val (id, code) = input.removePrefix("Card").split(": ")
-            val (winning, numbers) = code.split("|").splitAndMapToInt()
-            return ScratchTicket(id.trim().toInt(), winning, numbers)
+            val (id, winning, numbers) = input.removePrefix("Card").split(": ", "|").map { it.splitAndMapToInt() }
+            return ScratchTicket(id[0], winning, numbers)
         }
     }
 }
