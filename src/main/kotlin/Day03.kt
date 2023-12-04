@@ -1,3 +1,4 @@
+import utils.AoCDay
 import utils.Vec2D
 
 class Day03 : AoCDay("03") {

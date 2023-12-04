@@ -1,3 +1,4 @@
+import utils.AoCDay
 import utils.splitAndMapToInt
 
 class Day04 : AoCDay("04") {

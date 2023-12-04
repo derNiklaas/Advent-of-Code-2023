@@ -1,3 +1,4 @@
+import utils.AoCDay
 import utils.trimEach
 
 class Day02 : AoCDay("02") {

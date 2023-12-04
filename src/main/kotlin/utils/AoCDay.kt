@@ -1,4 +1,4 @@
-import utils.readFile
+package utils
 
 abstract class AoCDay(private val day: String) {
     val input = readFile("Day$day")

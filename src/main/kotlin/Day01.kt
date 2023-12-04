@@ -1,3 +1,5 @@
+import utils.AoCDay
+
 class Day01 : AoCDay("01") {
 
     val replacementMap = mapOf(
