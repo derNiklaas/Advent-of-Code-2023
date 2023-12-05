@@ -17,6 +17,16 @@ fun String.splitAndMapToInt(deliminator: String = " ") = split(deliminator).filt
 
 fun String.splitAndMapToInt(deliminator: Regex) = split(deliminator).filter(String::isNotEmpty).mapToInt()
 
+fun List<String>.mapToLong() = map(String::toLong)
+
+fun List<String>.splitAndMapToLong(deliminator: String = " ") = map { it.splitAndMapToLong(deliminator) }
+
+fun List<String>.splitAndMapToLong(deliminator: Regex) = map { it.splitAndMapToLong(deliminator) }
+
+fun String.splitAndMapToLong(deliminator: String = " ") = split(deliminator).filter(String::isNotEmpty).mapToLong()
+
+fun String.splitAndMapToLong(deliminator: Regex) = split(deliminator).filter(String::isNotEmpty).mapToLong()
+
 fun String.isLowerCase() = all(Char::isLowerCase)
 
 fun String.isUpperCase() = all(Char::isUpperCase)
