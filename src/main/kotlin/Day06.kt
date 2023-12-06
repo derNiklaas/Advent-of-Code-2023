@@ -7,33 +7,12 @@ class Day06 : AoCDay("06") {
 
     override fun part1(): Any {
         parseInput()
-        var output = 1L
-        races.forEach { race ->
-            var count = 0
-            for (i in race.time downTo 0) {
-                if (race.minDistance < i * (race.time - i)) {
-                    count++
-                }
-            }
-            if (count != 0) {
-                output *= count
-            }
-        }
-        return output
+        return simulateRaces()
     }
 
     override fun part2(): Any {
         parseInput(true)
-        val race = races.first()
-
-        var count = 0
-        for (i in race.time downTo 0) {
-            if (race.minDistance < i * (race.time - i)) {
-                count++
-            }
-        }
-
-        return count
+        return simulateRaces()
     }
 
     private fun parseInput(b: Boolean = false) {
@@ -58,6 +37,22 @@ class Day06 : AoCDay("06") {
         times.forEachIndexed { index, _ ->
             races += Race(times[index], distances[index])
         }
+    }
+
+    private fun simulateRaces(): Long {
+        var output = 1L
+        races.forEach { race ->
+            var count = 0
+            for (i in race.time downTo 0) {
+                if (race.minDistance < i * (race.time - i)) {
+                    count++
+                }
+            }
+            if (count != 0) {
+                output *= count
+            }
+        }
+        return output
     }
 }
 
