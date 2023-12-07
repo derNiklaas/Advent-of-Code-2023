@@ -80,103 +80,88 @@ data class CardRound(val originalString: String, val cards: Map<Char, Int>, val 
      * Returns zero if this object is equal to the specified other object, a negative number if it's less than other, or a positive number if it's greater than [other].
      */
     override fun compareTo(other: CardRound): Int {
+        // We have 5 of the same card
         if (hasAllCards()) {
+            // The other has 5 as well
             if (other.hasAllCards()) {
-                for (i in 0..4) {
-                    val thisValue = getCardValue(originalString[i])
-                    val otherValue = getCardValue(other.originalString[i])
-                    if (thisValue != otherValue) {
-                        return thisValue.compareTo(otherValue)
-                    }
-                }
+                return compareAllCards(other)
             }
+            // The other has 4 or fewer of the same card
             return 1
         }
 
-        // The other player has more cards, so they win
+        // We don't have 5 of the same card, but the other does
         if (other.hasAllCards()) return -1
 
-        /*
-        FOUR CARDS + ONE CARD
-         */
+        // We have 4 of the same card
         if (hasFourCards()) {
-            // If the other player has four cards, the player with the highest four cards wins
+            // The other has 4 as well
             if (other.hasFourCards()) {
-                for (i in 0..4) {
-                    val thisValue = getCardValue(originalString[i])
-                    val otherValue = getCardValue(other.originalString[i])
-                    if (thisValue != otherValue) {
-                        return thisValue.compareTo(otherValue)
-                    }
-                }
+                return compareAllCards(other)
             }
-            // If the other player has three or fewer cards, we win
+            // The other has 3 or fewer of the same card
             return 1
         }
 
-        // If the other player has four cards, we lose
+        // We don't have 4 of the same card, but the other does
         if (other.hasFourCards()) return -1
 
+        // We have a full house
         if (hasFullHouse()) {
+            // The other has a full house as well
             if (other.hasFullHouse()) {
-                for (i in 0..4) {
-                    val thisValue = getCardValue(originalString[i])
-                    val otherValue = getCardValue(other.originalString[i])
-                    if (thisValue != otherValue) {
-                        return thisValue.compareTo(otherValue)
-                    }
-                }
+                return compareAllCards(other)
             }
             return 1
         }
 
+        // The other has a full house
         if (other.hasFullHouse()) return -1
 
+        // We have 3 of the same card
         if (hasThreeCards()) {
+            // The other has 3 as well
             if (other.hasThreeCards()) {
-                for (i in 0..4) {
-                    val thisValue = getCardValue(originalString[i])
-                    val otherValue = getCardValue(other.originalString[i])
-                    if (thisValue != otherValue) {
-                        return thisValue.compareTo(otherValue)
-                    }
-                }
+                return compareAllCards(other)
             }
+            // The other has 2 or fewer of the same card
             return 1
         }
 
+        // We don't have 3 of the same card, but the other does
         if (other.hasThreeCards()) return -1
 
+        // We have 2 pairs of the same card (e.g. 11 and 22)
         if (hasTwoPairs()) {
+            // The other has 2 pairs as well
             if (other.hasTwoPairs()) {
-                for (i in 0..4) {
-                    val thisValue = getCardValue(originalString[i])
-                    val otherValue = getCardValue(other.originalString[i])
-                    if (thisValue != otherValue) {
-                        return thisValue.compareTo(otherValue)
-                    }
-                }
+                return compareAllCards(other)
             }
+            // The other has 1 pair or all cards are different
             return 1
         }
 
+        // The other has 2 pairs
         if (other.hasTwoPairs()) return -1
 
+        // We have 1 pair of the same card (e.g. 11)
         if (hasOnePair()) {
+            // The other has 1 pair as well
             if (other.hasOnePair()) {
-                for (i in 0..4) {
-                    val thisValue = getCardValue(originalString[i])
-                    val otherValue = getCardValue(other.originalString[i])
-                    if (thisValue != otherValue) {
-                        return thisValue.compareTo(otherValue)
-                    }
-                }
+                return compareAllCards(other)
             }
+            // The other has all cards different
             return 1
         }
 
+        // The other has 1 pair
         if (other.hasOnePair()) return -1
 
+        // All cards are unique, so we compare them by string
+        return compareAllCards(other)
+    }
+
+    private fun compareAllCards(other: CardRound): Int {
         for (i in 0..4) {
             val thisValue = getCardValue(originalString[i])
             val otherValue = getCardValue(other.originalString[i])
@@ -184,8 +169,7 @@ data class CardRound(val originalString: String, val cards: Map<Char, Int>, val 
                 return thisValue.compareTo(otherValue)
             }
         }
-
-        error("No winner found: $cards vs ${other.cards}")
+        error("Could not compare cards $cards vs ${other.cards}")
     }
 
     private fun getCardValue(card: Char): Int {
