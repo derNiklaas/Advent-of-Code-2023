@@ -3,7 +3,7 @@ import utils.splitAndMapToLong
 
 class Day05 : AoCDay("05") {
     private val recipes = mutableListOf<FarmRecipe>()
-    val seeds = input[0].split(": ")[1].splitAndMapToLong()
+    private val seeds = input[0].split(": ")[1].splitAndMapToLong()
 
     init {
         var newMap = true
@@ -49,25 +49,19 @@ class Day05 : AoCDay("05") {
     }
 
     private fun findLocation(seedID: Long): Long {
-        var soilNumber = -1L
-        var fertilizerNumber = -1L
-        var waterNumber = -1L
-        var lightNumber = -1L
-        var temperatureNumber = -1L
-        var humidityNumber = -1L
-        var locationNumber = -1L
-        for (i in 1..7) {
-            when (i) {
-                1 -> soilNumber = getNextNumber("seed", seedID)
-                2 -> fertilizerNumber = getNextNumber("soil", soilNumber)
-                3 -> waterNumber = getNextNumber("fertilizer", fertilizerNumber)
-                4 -> lightNumber = getNextNumber("water", waterNumber)
-                5 -> temperatureNumber = getNextNumber("light", lightNumber)
-                6 -> humidityNumber = getNextNumber("temperature", temperatureNumber)
-                7 -> locationNumber = getNextNumber("humidity", humidityNumber)
-            }
-        }
-        return locationNumber
+        return getNextNumber(
+            "humidity", getNextNumber(
+                "temperature", getNextNumber(
+                    "light", getNextNumber(
+                        "water", getNextNumber(
+                            "fertilizer", getNextNumber(
+                                "soil", getNextNumber("seed", seedID)
+                            )
+                        )
+                    )
+                )
+            )
+        )
     }
 
     private fun getNextNumber(category: String, number: Long): Long {
