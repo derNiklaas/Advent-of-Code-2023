@@ -5,26 +5,13 @@ class Day09 : AoCDay("09") {
     private val numbers = input.splitAndMapToInt()
     override fun part1(): Any {
         val allSteps = generateSteps()
-
-        allSteps.forEach { steps ->
-            steps.last().add(0)
-            for (i in steps.size - 2 downTo 0) {
-                val index = steps[i].size - 1
-                steps[i].add(steps[i][index] + steps[i + 1][index])
-            }
-        }
-
+        evaluate(allSteps)
         return allSteps.sumOf { it.first().last() }
     }
 
     override fun part2(): Any {
         val allSteps = generateSteps()
-        allSteps.forEach { steps ->
-            steps.last().add(0, 0)
-            for (i in steps.size - 2 downTo 0) {
-                steps[i].add(0, steps[i][0] - steps[i + 1][0])
-            }
-        }
+        evaluate(allSteps, true)
         return allSteps.sumOf { it.first().first() }
     }
 
@@ -47,6 +34,20 @@ class Day09 : AoCDay("09") {
         }
 
         return allSteps
+    }
+
+    private fun evaluate(allSteps: MutableList<List<MutableList<Int>>>, partB: Boolean = false) {
+        allSteps.asSequence().forEach { steps ->
+            steps.last().add(0)
+            for (i in steps.size - 2 downTo 0) {
+                if (partB) {
+                    steps[i].add(0, steps[i][0] - steps[i + 1][0])
+                } else {
+                    val index = steps[i].size - 1
+                    steps[i].add(steps[i][index] + steps[i + 1][index])
+                }
+            }
+        }
     }
 }
 
