@@ -4,6 +4,13 @@ import kotlin.math.abs
 
 data class Vec2D(val x: Int, val y: Int) {
 
+    companion object {
+        val UP = Vec2D(0, -1)
+        val LEFT = Vec2D(-1, 0)
+        val RIGHT = Vec2D(1, 0)
+        val DOWN = Vec2D(0, 1)
+    }
+
     /**
      * Checks if the [other] Vec2D is a direct neighbour of this Vec2D.
      */
