@@ -1,6 +1,6 @@
 import utils.AoCDay
 
-class Day07 : AoCDay("07") {
+class Day07 : AoCDay() {
 
     companion object {
         var partB = false

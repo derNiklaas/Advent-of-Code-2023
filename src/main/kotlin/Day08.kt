@@ -1,6 +1,6 @@
 import utils.AoCDay
 
-class Day08 : AoCDay("08") {
+class Day08 : AoCDay() {
 
     private val instructions = input.first().trim().toCharArray().map { it == 'L' }
     private val nodes = input.drop(2).map { line ->

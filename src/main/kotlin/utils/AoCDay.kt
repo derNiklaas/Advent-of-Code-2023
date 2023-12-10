@@ -1,10 +1,10 @@
 package utils
 
-abstract class AoCDay(private val day: String) {
-    val input = readFile("Day$day")
+abstract class AoCDay {
+    val input = readFile(javaClass.simpleName)
 
     fun execute() {
-        println("Running Day $day")
+        println("Running Day ${javaClass.simpleName.drop(3)}")
         println("Part 1: ${part1()}")
         println("Part 2: ${part2()}")
     }

@@ -1,7 +1,7 @@
 import utils.AoCDay
 import utils.trimEach
 
-class Day02 : AoCDay("02") {
+class Day02 : AoCDay() {
 
     private val games = input.map(Game::fromInput)
 

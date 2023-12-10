@@ -1,7 +1,7 @@
 import utils.AoCDay
 import utils.splitAndMapToInt
 
-class Day09 : AoCDay("09") {
+class Day09 : AoCDay() {
     private val numbers = input.splitAndMapToInt()
     override fun part1(): Any {
         val allSteps = generateSteps()

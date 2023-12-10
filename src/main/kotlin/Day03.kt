@@ -1,7 +1,7 @@
 import utils.AoCDay
 import utils.Vec2D
 
-class Day03 : AoCDay("03") {
+class Day03 : AoCDay() {
 
     private val numbers = mutableMapOf<Vec2D, SerialNumber>()
     private val symbols = mutableMapOf<Vec2D, Char>()

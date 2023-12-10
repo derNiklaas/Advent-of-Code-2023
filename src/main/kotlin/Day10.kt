@@ -1,7 +1,7 @@
 import utils.AoCDay
 import utils.Vec2D
 
-class Day10 : AoCDay("10") {
+class Day10 : AoCDay() {
     private val pipes = buildMap {
         input.forEachIndexed { y, row ->
             row.forEachIndexed { x, char ->

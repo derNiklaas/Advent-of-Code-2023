@@ -1,7 +1,7 @@
 import utils.AoCDay
 import utils.splitAndMapToLong
 
-class Day06 : AoCDay("06") {
+class Day06 : AoCDay() {
 
     private val races = mutableListOf<Race>()
 

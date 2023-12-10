@@ -1,7 +1,7 @@
 import utils.AoCDay
 import utils.splitAndMapToLong
 
-class Day05 : AoCDay("05") {
+class Day05 : AoCDay() {
     private val recipes = mutableListOf<FarmRecipe>()
     private val seeds = input[0].split(": ")[1].splitAndMapToLong()
 

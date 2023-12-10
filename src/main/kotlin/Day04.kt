@@ -1,7 +1,7 @@
 import utils.AoCDay
 import utils.splitAndMapToInt
 
-class Day04 : AoCDay("04") {
+class Day04 : AoCDay() {
 
     private val parsedInput = input.map(ScratchTicket::fromInput)
 

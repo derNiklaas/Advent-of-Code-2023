@@ -1,6 +1,6 @@
 import utils.AoCDay
 
-class Day01 : AoCDay("01") {
+class Day01 : AoCDay() {
 
     val replacementMap = mapOf(
         "zero" to 0,
