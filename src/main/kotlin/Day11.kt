@@ -9,21 +9,18 @@ class Day11 : AoCDay() {
         var sum = 0
         for (i in stations.keys) {
             for (j in i + 1..stations.size) {
-                sum += findPathBetween(stations[i]!!, stations[j]!!)
+                sum += getDistanceBetween(stations[i]!!, stations[j]!!)
             }
         }
         return sum
     }
 
-    // too low?
-    // 2132432124
-
     override fun part2(): Any {
         val stations = expandUniverse2ElectricBoogaloo(getStations(galaxies), 999_999)
-        var sum = 0
+        var sum = 0L
         for (i in stations.keys) {
             for (j in i + 1..stations.size) {
-                sum += findPathBetween(stations[i]!!, stations[j]!!)
+                sum += getDistanceBetween(stations[i]!!, stations[j]!!)
             }
         }
         return sum
@@ -67,10 +64,11 @@ class Day11 : AoCDay() {
                 xShift += shift
             }
         }
+        println("max shift x $xShift y $yShift")
         return newStations
     }
 
-    private fun findPathBetween(start: Vec2D, end: Vec2D): Int {
+    private fun getDistanceBetween(start: Vec2D, end: Vec2D): Int {
         return abs(start.x - end.x) + abs(start.y - end.y)
     }
 
