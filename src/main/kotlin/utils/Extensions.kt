@@ -56,6 +56,10 @@ private fun <T> _allPermutations(list: List<T>): Set<List<T>> {
     return result
 }
 
+fun List<String>.to2DCharArray(): Array<CharArray> {
+    return this.map { it.toCharArray() }.toTypedArray()
+}
+
 operator fun <T> List<T>.get(range: IntRange) = subList(range.first, range.last + 1)
 
 /** Maps a given int to [0..[other]]*/
