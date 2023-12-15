@@ -60,6 +60,12 @@ fun List<String>.to2DCharArray(): Array<CharArray> {
     return this.map { it.toCharArray() }.toTypedArray()
 }
 
+@JvmName("mapInnerCollection")
+fun <I, O> Collection<Collection<I>>.mapInner(transform: (I) -> O) = this.map { it.map(transform) }
+
+@JvmName("mapInnerString")
+fun <O> Collection<String>.mapInner(transform: (Char) -> O) = this.map { it.toCharArray().map(transform) }
+
 operator fun <T> List<T>.get(range: IntRange) = subList(range.first, range.last + 1)
 
 /** Maps a given int to [0..[other]]*/

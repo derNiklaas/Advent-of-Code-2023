@@ -1,8 +1,9 @@
 import utils.AoCDay
 import utils.Vec2D
+import utils.mapInner
 
 class Day11 : AoCDay() {
-    private val galaxies = input.map { row -> row.map { it == '#' } }
+    private val galaxies = input.mapInner { it == '#' }
 
     override fun part1(): Any {
         return solve(1)
