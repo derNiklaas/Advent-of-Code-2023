@@ -1,4 +1,3 @@
-import kotlin.contracts.contract
 import utils.AoCDay
 
 class Day15 : AoCDay() {
@@ -43,7 +42,6 @@ class Day15 : AoCDay() {
         var sum = 0L
         hashes.forEach { (boxIndex, box) ->
             box.forEachIndexed { index, data ->
-                //println((boxIndex + 1) * (index + 1) * data.second)
                 sum += (boxIndex + 1) * (index + 1) * data.second
             }
         }
