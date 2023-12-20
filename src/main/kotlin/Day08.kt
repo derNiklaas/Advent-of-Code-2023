@@ -1,4 +1,5 @@
 import utils.AoCDay
+import utils.lcmWolfram
 
 class Day08 : AoCDay() {
 
@@ -15,7 +16,7 @@ class Day08 : AoCDay() {
 
     override fun part2(): Any {
         val currentNodes = nodes.filter { it.name.endsWith("A") }.map { finishOne(it.name) }
-        return "https://www.wolframalpha.com/input?i2d=true&i=lcm%5C%2840%29${currentNodes.joinToString("%5C%2844%29")}%5C%2841%29"
+        return currentNodes.lcmWolfram()
     }
 
     private fun finishOne(start: String): Long {

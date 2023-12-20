@@ -76,3 +76,13 @@ infix fun Int.within(other: Int): Int {
     }
     return index % other
 }
+
+@JvmName("lcmWolframInt")
+fun Collection<Int>.lcmWolfram(): String {
+    return "https://www.wolframalpha.com/input?i2d=true&i=lcm%5C%2840%29${joinToString("%5C%2844%29")}%5C%2841%29"
+}
+
+@JvmName("lcmWolframLong")
+fun Collection<Long>.lcmWolfram(): String {
+    return "https://www.wolframalpha.com/input?i2d=true&i=lcm%5C%2840%29${joinToString("%5C%2844%29")}%5C%2841%29"
+}

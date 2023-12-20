@@ -1,4 +1,5 @@
 import utils.AoCDay
+import utils.lcmWolfram
 
 class Day20 : AoCDay() {
 
@@ -35,7 +36,7 @@ class Day20 : AoCDay() {
             }
         }
 
-        return "https://www.wolframalpha.com/input?i2d=true&i=lcm%5C%2840%29${valuesForHighPulse.values.joinToString("%5C%2844%29")}%5C%2841%29"
+        return valuesForHighPulse.values.lcmWolfram()
     }
 
     private fun pressButton(
@@ -150,7 +151,6 @@ private sealed interface Module {
         override val name: String = "broadcaster"
     }
 }
-
 
 fun main() {
     Day20().execute()
