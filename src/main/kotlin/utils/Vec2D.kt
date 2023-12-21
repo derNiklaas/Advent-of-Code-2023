@@ -33,6 +33,11 @@ data class Vec2D(val x: Int, val y: Int) {
         }
     }
 
+    fun getDirectNeighbours() = buildList {
+        listOf(UP, LEFT, DOWN, RIGHT).forEach {
+            add(Vec2D(x + it.x, y + it.y))
+        }
+    }
 
     operator fun plus(other: Vec2D) = Vec2D(x + other.x, y + other.y)
 
